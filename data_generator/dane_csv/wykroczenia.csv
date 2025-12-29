@@ -1,0 +1,200 @@
+kod,rodzaj,nazwa
+100 § 1,Drogowe,Przekroczenie dozwolonej prędkości w terenie zabudowanym
+100 § 2,Drogowe,Przekroczenie dozwolonej prędkości poza terenem zabudowanym
+100 § 3,Drogowe,Niezastosowanie się do sygnalizacji świetlnej (czerwone światło)
+100 § 4,Drogowe,Parkowanie w miejscu niedozwolonym (zakaz zatrzymywania się)
+100 § 5,Drogowe,Parkowanie na chodniku w sposób utrudniający ruch pieszych
+100 § 6,Drogowe,Parkowanie na miejscu dla osób niepełnosprawnych
+100 § 7,Drogowe,Jazda bez zapiętych pasów bezpieczeństwa
+100 § 8,Drogowe,Korzystanie z telefonu komórkowego podczas jazdy
+100 § 9,Drogowe,Prowadzenie pojazdu w stanie po spożyciu alkoholu
+100 § 10,Drogowe,Jazda bez wymaganych uprawnień (brak prawa jazdy)
+100 § 11,Drogowe,Niewłaściwe wyprzedzanie na linii ciągłej
+100 § 12,Drogowe,Niewłaściwe wyprzedzanie na przejściu dla pieszych
+100 § 13,Drogowe,Wymuszenie pierwszeństwa przejazdu
+100 § 14,Drogowe,Niezatrzymanie się przed znakiem 'Stop'
+100 § 15,Drogowe,Jazda bez wymaganego oświetlenia po zmroku
+100 § 16,Drogowe,Stan techniczny pojazdu zagrażający bezpieczeństwu (np. opony)
+100 § 17,Drogowe,Niewłaściwe przewożenie dziecka (brak fotelika)
+100 § 18,Drogowe,Jazda rowerem po chodniku (gdy jest ścieżka rowerowa)
+100 § 19,Drogowe,Niezastosowanie się do zakazu wjazdu
+100 § 20,Drogowe,Przekroczenie prędkości (pomiar laserowy)
+100 § 21,Drogowe,Przekroczenie prędkości (pomiar z wideorejestratora)
+100 § 22,Drogowe,Nieustąpienie pierwszeństwa pieszemu na przejściu
+100 § 23,Drogowe,Ominięcie pojazdu, który zatrzymał się w celu ustąpienia pieszemu
+100 § 24,Drogowe,Jazda pod prąd (ulica jednokierunkowa)
+100 § 25,Drogowe,Niezastosowanie się do znaku 'Nakaz jazdy w prawo/lewo'
+100 § 26,Drogowe,Niestosowanie się do znaku 'Zakaz skrętu'
+100 § 27,Drogowe,Naruszenie zakazu zawracania
+100 § 28,Drogowe,Niezasygnalizowanie manewru skrętu lub zmiany pasa
+100 § 29,Drogowe,Niewłaściwe cofanie (np. na autostradzie)
+100 § 30,Drogowe,Jazda lewym pasem bez uzasadnienia (blokowanie ruchu)
+100 § 31,Drogowe,Agresywna jazda (np. 'na zderzaku')
+100 § 32,Drogowe,Zajechanie drogi innemu pojazdowi
+100 § 33,Drogowe,Nagłe hamowanie bez uzasadnionej przyczyny
+100 § 34,Drogowe,Prowadzenie pojazdu niedopuszczonego do ruchu
+100 § 35,Drogowe,Prowadzenie pojazdu bez ważnego ubezpieczenia OC
+100 § 36,Drogowe,Prowadzenie pojazdu bez ważnego przeglądu technicznego
+100 § 37,Drogowe,Jazda pojazdem z niesprawnymi światłami hamowania
+100 § 38,Drogowe,Jazda pojazdem z niesprawnym oświetleniem tablicy rejestracyjnej
+100 § 39,Drogowe,Jazda pojazdem nadmiernie hałasującym (uszkodzony wydech)
+100 § 40,Drogowe,Jazda pojazdem nadmiernie dymiącym
+100 § 41,Drogowe,Jazda pojazdem z oponami o nadmiernym zużyciu
+100 § 42,Drogowe,Jazda na światłach przeciwmgielnych przy dobrej widoczności
+100 § 43,Drogowe,Niezachowanie bezpiecznej odległości od pojazdu poprzedzającego
+100 § 44,Drogowe,Przejeżdżanie przez przejazd kolejowy na czerwonym świetle
+100 § 45,Drogowe,Niezatrzymanie się przed zaporami kolejowymi
+100 § 46,Drogowe,Jazda motocyklem bez kasku
+100 § 47,Drogowe,Jazda motorowerem po chodniku
+100 § 48,Drogowe,Przewożenie pasażera motocyklem bez kasku
+100 § 49,Drogowe,Jazda rowerem bez wymaganego oświetlenia
+100 § 50,Drogowe,Jazda rowerem pod wpływem alkoholu
+101 § 1,Drogowe,Jazda hulajnogą elektryczną po chodniku (gdy prędkość > 6 km/h)
+101 § 2,Drogowe,Jazda hulajnogą elektryczną pod wpływem alkoholu
+101 § 3,Drogowe,Przewożenie hulajnogą elektryczną drugiej osoby
+101 § 4,Drogowe,Parkowanie na przejściu dla pieszych
+101 § 5,Drogowe,Parkowanie na skrzyżowaniu lub w odległości mniejszej niż 10m
+101 § 6,Drogowe,Parkowanie w bramie wjazdowej
+101 § 7,Drogowe,Parkowanie na pasie zieleni (trawniku)
+101 § 8,Drogowe,Parkowanie blokujące dostęp do śmietnika
+101 § 9,Drogowe,Tamowanie lub utrudnianie ruchu
+101 § 10,Drogowe,Prowadzenie pojazdu po użyciu środków odurzających
+101 § 11,Drogowe,Prowadzenie pojazdu przez osobę nieposiadającą uprawnień
+101 § 12,Drogowe,Niezatrzymanie pojazdu do kontroli drogowej
+101 § 13,Drogowe,Przewożenie większej liczby pasażerów niż dozwolona
+101 § 14,Drogowe,Przewożenie ładunku w sposób nieprawidłowy (niezabezpieczony)
+101 § 15,Drogowe,Przewożenie ładunku wystającego poza obrys pojazdu bez oznaczenia
+101 § 16,Drogowe,Przeciążenie pojazdu (zbyt duża masa całkowita)
+101 § 17,Drogowe,Jazda bez tablic rejestracyjnych
+101 § 18,Drogowe,Jazda z zakrytymi tablicami rejestracyjnymi
+101 § 19,Drogowe,Posługiwanie się kartą parkingową osoby nieuprawnionej
+101 § 20,Drogowe,Jazda bez włączonych świateł mijania w dzień
+101 § 21,Drogowe,Naruszenie zakazu wyprzedzania (np. na wzniesieniu)
+101 § 22,Drogowe,Naruszenie zakazu wyprzedzania na zakręcie
+101 § 23,Drogowe,Wyprzedzanie z niewłaściwej (prawej) strony
+101 § 24,Drogowe,Naruszenie obowiązku 'jazdy na suwak'
+101 § 25,Drogowe,Niezastosowanie się do 'korytarza życia'
+101 § 26,Drogowe,Jazda pojazdem uprzywilejowanym bez uprawnień
+101 § 27,Drogowe,Używanie sygnałów dźwiękowych w terenie zabudowanym bez potrzeby
+101 § 28,Drogowe,Ciągnięcie za pojazdem osoby na sankach, nartach
+101 § 29,Drogowe,Kierowanie pojazdem przez osobę chorą (np. atak epilepsji)
+101 § 30,Porządkowe,Spożywanie alkoholu w miejscu publicznym (park, plac)
+101 § 31,Porządkowe,Spożywanie alkoholu na ulicy lub przystanku
+101 § 32,Porządkowe,Zakłócanie porządku publicznego (krzyki, hałasy)
+101 § 33,Porządkowe,Zakłócanie ciszy nocnej (głośna muzyka, impreza)
+101 § 34,Porządkowe,Zaśmiecanie terenu publicznego (wyrzucanie odpadów)
+101 § 35,Porządkowe,Niszczenie mienia publicznego (np. ławka, przystanek)
+101 § 36,Porządkowe,Malowanie graffiti na elewacji budynku
+101 § 37,Porządkowe,Palenie wyrobów tytoniowych w miejscu zabronionym
+101 § 38,Porządkowe,Nieobyczajne zachowanie w miejscu publicznym
+101 § 39,Porządkowe,Żebranie w miejscu publicznym w sposób natarczywy
+101 § 40,Porządkowe,Niezachowanie środków ostrożności przy trzymaniu psa (bez smyczy)
+101 § 41,Porządkowe,Puszczanie psa luzem bez kagańca (rasa agresywna)
+101 § 42,Porządkowe,Używanie słów nieprzyzwoitych w miejscu publicznym
+101 § 43,Porządkowe,Niszczenie mienia (wyrywanie znaków drogowych)
+101 § 44,Porządkowe,Niszczenie mienia (wybijanie szyb w wiacie przystankowej)
+101 § 45,Porządkowe,Niszczenie mienia (łamanie młodych drzew)
+101 § 46,Porządkowe,Niszczenie mienia (przewracanie koszy na śmieci)
+101 § 47,Porządkowe,Zakłócanie spokoju (używanie petard poza sezonem)
+101 § 48,Porządkowe,Zakłócanie spokoju (głośny wydech motocykla w nocy)
+101 § 49,Porządkowe,Zakłócanie spokoju (chroniczne szczekanie psa)
+101 § 50,Porządkowe,Oddawanie moczu (mikcja) w miejscu publicznym
+102 § 1,Porządkowe,Załatwianie potrzeby fizjologicznej w miejscu publicznym
+102 § 2,Porządkowe,Niestosowne zachowanie (spanie na ławce w stanie nietrzeźwym)
+102 § 3,Porządkowe,Wprowadzanie w błąd organu państwowego (fałszywy alarm)
+102 § 4,Porządkowe,Bezzasadne wezwanie policji lub straży pożarnej
+102 § 5,Porządkowe,Niedopełnienie obowiązku sprzątnięcia po psie
+102 § 6,Porządkowe,Niezachowanie należytej ostrożności przy trzymaniu groźnego zwierzęcia
+102 § 7,Porządkowe,Szczucie psem lub drażnienie zwierzęcia
+102 § 8,Porządkowe,Prowadzenie hodowli zwierząt uciążliwej dla otoczenia
+102 § 9,Porządkowe,Wypalanie traw lub pozostałości roślinnych
+102 § 10,Porządkowe,Palenie śmieci w ognisku lub piecu domowym
+102 § 11,Porządkowe,Wylewanie nieczystości płynnych (szamba) w miejscu niedozwolonym
+102 § 12,Porządkowe,Zaśmiecanie lasu lub terenu zielonego
+102 § 13,Porządkowe,Wyrzucanie odpadów wielkogabarytowych (np. mebli) do lasu
+102 § 14,Porządkowe,Nielegalne składowanie odpadów (np. opon)
+102 § 15,Porządkowe,Nielegalny handel (np. na chodniku bez zezwolenia)
+102 § 16,Porządkowe,Nielegalne umieszczanie reklam, plakatów, ulotek
+102 § 17,Porządkowe,Stwarzanie zagrożenia pożarowego (np. grill w lesie)
+102 § 18,Porządkowe,Kąpiel w miejscu zabronionym
+102 § 19,Porządkowe,Naruszenie miru domowego (wtargnięcie na teren prywatny)
+102 § 20,Porządkowe,Uporczywe nękanie (stalking) - forma wykroczenia
+102 § 21,Porządkowe,Groźby karalne (w formie wykroczenia)
+102 § 22,Porządkowe,Paserstwo (wykroczenie)
+102 § 23,Porządkowe,Zatajenie własnej tożsamości przed funkcjonariuszem
+102 § 24,Porządkowe,Niewykonywanie poleceń funkcjonariusza
+102 § 25,Porządkowe,Publiczne nawoływanie do popełnienia wykroczenia
+102 § 26,Porządkowe,Umieszczanie nieprzyzwoitych ogłoszeń lub rysunków
+102 § 27,Porządkowe,Doprowadzenie małoletniego do stanu nietrzeźwości
+102 § 28,Porządkowe,Sprzedaż alkoholu osobie nieletniej
+102 § 29,Porządkowe,Sprzedaż wyrobów tytoniowych osobie nieletniej
+102 § 30,Porządkowe,Podawanie alkoholu osobie nietrzeźwej
+102 § 31,Porządkowe,Nielegalne organizowanie zbiórki publicznej
+102 § 32,Porządkowe,Nielegalne zajęcie pasa drogowego (np. pod handel)
+102 § 33,Porządkowe,Niedopełnienie obowiązku odśnieżania chodnika przez właściciela posesji
+102 § 34,Porządkowe,Niewłaściwe oznakowanie robót drogowych
+102 § 35,Porządkowe,Brak numeru porządkowego na budynku
+102 § 36,Porządkowe,Nielegalne wejście na teren obiektu sportowego podczas imprezy
+102 § 37,Porządkowe,Wnoszenie alkoholu na imprezę masową
+102 § 38,Porządkowe,Używanie drona w strefie zakazu lotów (np. blisko lotniska)
+102 § 39,Porządkowe,PłSzoszenie ptactwa (np. gołębi) w miejscu zabronionym
+102 § 40,Karno-skarbowe,Nielegalny handel wyrobami tytoniowymi bez akcyzy
+102 § 41,Karno-skarbowe,Handel alkoholem bez wymaganego zezwolenia
+102 § 42,Karno-skarbowe,Nieopłacenie podatku akcyowego od sprowadzonego pojazdu
+102 § 43,Karno-skarbowe,Paserstwo akcyzowe (przechowywanie wyrobów bez znaków skarbowych)
+102 § 44,Karno-skarbowe,Uszczuplenie należności publicznoprawnej
+102 § 45,Karno-skarbowe,Prowadzenie gier hazardowych bez zezwolenia
+102 § 46,Karno-skarbowe,Sprzedaż towarów bez ewidencji na kasie fiskalnej
+102 § 47,Karno-skarbowe,Nierzetelne prowadzenie ksiąg podatkowych
+102 § 48,Karno-skarbowe,Niezłożenie deklaracji podatkowej w terminie
+102 § 49,Karno-skarbowe,Zatajenie dochodów przed organem podatkowym (mała wartość)
+102 § 50,Karno-skarbowe,Wprowadzenie do obrotu podrobionych towarów (mała wartość)
+103 § 1,Karno-skarbowe,Sprzedaż podrobionych perfum lub odzieży
+103 § 2,Karno-skarbowe,Sprzedaż oprogramowania lub muzyki bez licencji
+103 § 3,Karno-skarbowe,Przemyt towarów przez granicę (mała wartość)
+103 § 4,Karno-skarbowe,Posiadanie nielegalnego oprogramowania do celów handlowych
+103 § 5,Karno-skarbowe,Nielegalna produkcja alkoholu (bimbrownictwo, mała skala)
+103 § 6,Karno-skarbowe,Nielegalne rozlewanie perfum
+103 § 7,Karno-skarbowe,Uchylanie się od płacenia cła
+103 § 8,Karno-skarbowe,Oszustwo podatkowe (mała szkodliwość społeczna)
+103 § 9,Karno-skarbowe,Posługiwanie się fałszywymi znakami akcyzy
+103 § 10,Przeciw mieniu,Kradzież sklepowa (artykuły spożywcze)
+103 § 11,Przeciw mieniu,Kradzież sklepowa (kosmetyki lub perfumy)
+103 § 12,Przeciw mieniu,Kradzież sklepowa (drobna elektronika)
+103 § 13,Przeciw mieniu,Drobna kradzież (np. portfela, telefonu)
+103 § 14,Przeciw mieniu,Uszkodzenie mienia prywatnego (np. porysowanie samochodu)
+103 § 15,Przeciw mieniu,Uszkodzenie mienia (wybicie szyby w oknie)
+103 § 16,Przeciw mieniu,Paserstwo nieumyślne (nabycie rzeczy z kradzieży)
+103 § 17,Przeciw mieniu,Kradzież roweru
+103 § 18,Przeciw mieniu,Kradzież drewna z lasu (na małą skalę)
+103 § 19,Przeciw mieniu,Zniszczenie lub uszkodzenie ogrodzenia posesji
+103 § 20,Przeciw mieniu,Kradzież paliwa ze stacji benzynowej
+103 § 21,Przeciw mieniu,Kradzież sklepowa (alkohol lub wyroby tytoniowe)
+103 § 22,Przeciw mieniu,Kradzież sklepowa (odzież lub obuwie)
+103 § 23,Przeciw mieniu,Kradzież (drobna) z włamaniem do piwnicy
+103 § 24,Przeciw mieniu,Kradzież (drobna) z włamaniem do altany na działce
+103 § 25,Przeciw mieniu,Kradzież (drobna) z włamaniem do automatu (np. z napojami)
+103 § 26,Przeciw mieniu,Kradzież części samochodowych (np. kołpaków, lusterek)
+103 § 27,Przeciw mieniu,Kradzież katalizatora (wykroczenie, niska wartość)
+103 § 28,Przeciw mieniu,Kradzież kieszonkowa (w autobusie, na koncercie)
+103 § 29,Przeciw mieniu,Kradzież z szatni (np. w klubie fitness, na basenie)
+103 § 30,Przeciw mieniu,Kradzież z terenu budowy (narzędzia, materiały - mała wartość)
+103 § 31,Przeciw mieniu,Kradzież mienia z pojazdu (bez włamania, np. z otwartego auta)
+103 § 32,Przeciw mieniu,Kradzież tablic rejestracyjnych
+103 § 33,Przeciw mieniu,Kradzież hulajnogi elektrycznej
+103 § 34,Przeciw mieniu,Kradzież telefonu komórkowego (np. wyrwanie z ręki)
+103 § 35,Przeciw mieniu,Uszkodzenie mienia (przebicie opon w pojeździe)
+103 § 36,Przeciw mieniu,Uszkodzenie mienia (wybicie lusterka w samochodzie)
+103 § 37,Przeciw mieniu,Uszkodzenie mienia (zniszczenie drzwi, domofonu)
+103 § 38,Przeciw mieniu,Uszkodzenie mienia (zniszczenie automatu biletowego)
+103 § 39,Przeciw mieniu,Uszkodzenie mienia (zniszczenie upraw rolnych, mała wartość)
+103 § 40,Przeciw mieniu,Paserstwo (świadomy zakup kradzionego roweru)
+103 § 41,Przeciw mieniu,Paserstwo (sprzedaż kradzionych części na giełdzie)
+103 § 42,Przeciw mieniu,Oszustwo (wyłudzenie posiłku w restauracji - 'dine and dash')
+103 § 43,Przeciw mieniu,Oszustwo (wyłudzenie przejazdu taksówką bez zapłaty)
+103 § 44,Przeciw mieniu,Oszustwo (jazda na gapę w komunikacji miejskiej)
+103 § 45,Przeciw mieniu,Oszustwo internetowe (mała wartość, np. niezgodny towar)
+103 § 46,Przeciw mieniu,Samowolne użycie cudzej rzeczy (np. krótkotrwałe użycie pojazdu)
+103 § 47,Przeciw mieniu,Przywłaszczenie mienia (np. znalezionego portfela i niezwrócenie go)
+103 § 48,Przeciw mieniu,Kradzież energii elektrycznej (nielegalne podłączenie)
+103 § 49,Przeciw mieniu,Kradzież wody (nielegalne podłączenie do sieci)

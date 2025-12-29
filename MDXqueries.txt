@@ -1,0 +1,126 @@
+-- =============================================================
+-- ZESTAW 10 ZAPYTAŃ MDX DO PROJEKTU "POLICJA"
+-- Nazwa kostki: [Palicja DW]
+-- Instrukcja: Kopiuj każde zapytanie OSOBNO i klikaj Execute.
+-- =============================================================
+
+-- -------------------------------------------------------------
+-- 1. Porównanie liczby mandatów wg kategorii (Maj vs Kwiecień)
+-- Cel: Analiza zmian liczby wykroczeń w czasie.
+-- -------------------------------------------------------------
+SELECT 
+    {[Measures].[Numer Mandatu DD Distinct Count]} ON COLUMNS,
+    NON EMPTY [Dim Wykroczenie].[Rodzaj].[Rodzaj].MEMBERS * {[Dim Data].[Nazwa Miesiaca].&[Maj], [Dim Data].[Nazwa Miesiaca].&[Kwiecien]} ON ROWS
+FROM [Palicja DW]
+WHERE ([Dim Data].[Rok].&[2024])
+
+-- -------------------------------------------------------------
+-- 2. Mandaty w godzinach szczytu (7-9 i 15-17)
+-- Cel: Sprawdzenie obciążenia w kluczowych godzinach.
+-- -------------------------------------------------------------
+WITH 
+SET [GodzinySzczytu] AS
+    {[Dim Czas Dnia].[Godzina].&[7], [Dim Czas Dnia].[Godzina].&[8], 
+     [Dim Czas Dnia].[Godzina].&[15], [Dim Czas Dnia].[Godzina].&[16]}
+
+MEMBER [Measures].[Mandaty Szczyt] AS
+    SUM([GodzinySzczytu], [Measures].[Numer Mandatu DD Distinct Count])
+
+SELECT 
+    {[Measures].[Mandaty Szczyt]} ON COLUMNS,
+    [Dim Data].[Nazwa Miesiaca].MEMBERS ON ROWS
+FROM [Palicja DW]
+WHERE ([Dim Data].[Rok].&[2024])
+
+-- -------------------------------------------------------------
+-- 3. Korelacja: Zgłoszenia vs Mandaty
+-- Cel: Czy więcej zgłoszeń oznacza więcej wystawionych mandatów?
+-- -------------------------------------------------------------
+SELECT 
+    {
+     [Measures].[Numer Mandatu DD Distinct Count], 
+     [Measures].[Fact Zgloszenie Count]
+    } ON COLUMNS,
+    [Dim Data].[Nazwa Miesiaca].MEMBERS ON ROWS
+FROM [Palicja DW]
+WHERE ([Dim Data].[Rok].&[2024])
+
+-- -------------------------------------------------------------
+-- 4. Ranking Funkcjonariuszy (Efektywność)
+-- Cel: Który funkcjonariusz wystawia najwięcej mandatów?
+-- -------------------------------------------------------------
+SELECT 
+    {[Measures].[Numer Mandatu DD Distinct Count]} ON COLUMNS,
+    NON EMPTY ORDER(
+        [Dim Funkcjonariusz].[Nazwisko].MEMBERS,
+        [Measures].[Numer Mandatu DD Distinct Count], 
+        BDESC
+    ) ON ROWS
+FROM [Palicja DW]
+WHERE ([Dim Data].[Rok].&[2024])
+
+-- -------------------------------------------------------------
+-- 5. Mandaty według Posterunków
+-- Cel: Porównanie aktywności poszczególnych jednostek.
+-- -------------------------------------------------------------
+SELECT 
+    {[Measures].[Numer Mandatu DD Distinct Count]} ON COLUMNS,
+    NON EMPTY [Dim Posterunek].[Nazwa Posterunku].MEMBERS ON ROWS
+FROM [Palicja DW]
+
+-- -------------------------------------------------------------
+-- 6. Recydywiści (Osoby z więcej niż 1 mandatem)
+-- Cel: Identyfikacja osób łamiących prawo wielokrotnie.
+-- -------------------------------------------------------------
+SELECT 
+    {[Measures].[Numer Mandatu DD Distinct Count], [Measures].[Kwota Mandatu]} ON COLUMNS,
+    FILTER(
+        [Dim Osoba].[Pesel BK].MEMBERS,
+        [Measures].[Numer Mandatu DD Distinct Count] > 1
+    ) ON ROWS
+FROM [Palicja DW]
+
+-- -------------------------------------------------------------
+-- 7. Czy wysokość mandatu wpływa na recydywę?
+-- Cel: Analiza średniej kwoty kar u recydywistów.
+-- -------------------------------------------------------------
+SELECT 
+    {[Measures].[Numer Mandatu DD Distinct Count], [Measures].[Srednia Kwota Mandatu]} ON COLUMNS,
+    FILTER(
+        [Dim Osoba].[Pesel BK].MEMBERS,
+        [Measures].[Numer Mandatu DD Distinct Count] > 1
+    ) ON ROWS
+FROM [Palicja DW]
+
+-- -------------------------------------------------------------
+-- 8. Miasta z największą recydywą
+-- Cel: Gdzie najczęściej dochodzi do powrotu do przestępstwa?
+-- -------------------------------------------------------------
+SELECT 
+    {[Measures].[Numer Mandatu DD Distinct Count]} ON COLUMNS,
+    NON EMPTY [Dim Lokalizacja].[Miasto].MEMBERS ON ROWS
+FROM [Palicja DW]
+WHERE (
+    FILTER([Dim Osoba].[Pesel BK].MEMBERS, [Measures].[Numer Mandatu DD Distinct Count] > 1)
+)
+
+-- -------------------------------------------------------------
+-- 9. Status płatności a recydywa
+-- Cel: Czy recydywiści płacą mandaty?
+-- -------------------------------------------------------------
+SELECT 
+    {[Measures].[Kwota Mandatu], [Measures].[Wskaznik sciagalnosci]} ON COLUMNS,
+    [Dim Status].[Status Opis].MEMBERS ON ROWS
+FROM [Palicja DW]
+WHERE (
+    FILTER([Dim Osoba].[Pesel BK].MEMBERS, [Measures].[Numer Mandatu DD Distinct Count] > 1)
+)
+
+-- -------------------------------------------------------------
+-- 10. Satysfakcja ze zgłoszeń wg Miast
+-- Cel: Gdzie obywatele są najbardziej zadowoleni z obsługi?
+-- -------------------------------------------------------------
+SELECT 
+    {[Measures].[Fact Zgloszenie Count], [Measures].[Sredni poziom satysfakcji]} ON COLUMNS,
+    NON EMPTY [Dim Posterunek].[Miasto].MEMBERS ON ROWS
+FROM [Palicja DW]

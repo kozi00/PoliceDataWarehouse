@@ -1,0 +1,85 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="294b931c-d7fd-4f4e-8f51-1053a2026f06" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Palicja DW</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>Fact Mandat</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="cfa2c5f8-29ac-4b9a-83dd-5e38d2dce132">
+          <ID>Fact Mandat</ID>
+          <Name>Fact Mandat</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="00c0a002-f2ce-4392-926d-126f2fa8ce58">
+            <DataSourceViewID>Palicja DW</DataSourceViewID>
+            <TableID>dbo_Fact_Mandat</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Fact Zgloszenie</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="31324e84-510e-4650-9767-e8468eea5d3e">
+          <ID>Fact Zgloszenie</ID>
+          <Name>Fact Zgloszenie</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="7afdf1d3-7dce-4853-b9e7-14621a8064bd">
+            <DataSourceViewID>Palicja DW</DataSourceViewID>
+            <TableID>dbo_Fact_Zgloszenie</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Fact Mandat 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="001f1060-6a57-421e-940b-46879c67623b">
+          <ID>Fact Mandat</ID>
+          <Name>Fact Mandat</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="9fff29ea-e10b-420a-b327-273a7db4d3fd">
+            <DataSourceViewID>Palicja DW</DataSourceViewID>
+            <TableID>dbo_Fact_Mandat</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Fact Zgloszenie 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="1e320f08-bca9-46af-af98-89e07039f5c1">
+          <ID>Fact Zgloszenie</ID>
+          <Name>Fact Zgloszenie</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="127fa454-6405-4ce1-a3a9-b38622681d33">
+            <DataSourceViewID>Palicja DW</DataSourceViewID>
+            <TableID>dbo_Fact_Zgloszenie</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

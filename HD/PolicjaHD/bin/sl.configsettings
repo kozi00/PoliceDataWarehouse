@@ -1,0 +1,91 @@
+﻿<ConfigurationSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Database>
+    <DataSources>
+      <DataSource>
+        <ID>Palicja DW</ID>
+        <ConnectionString>Data Source=localhost;Initial Catalog=Policja;Integrated Security=True;TrustServerCertificate=True</ConnectionString>
+        <ManagedProvider>System.Data.SqlClient</ManagedProvider>
+        <ImpersonationInfo>
+          <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">ImpersonateAccount</ImpersonationMode>
+          <Account xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">hplaptop\polis</Account>
+          <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">PasswordRemoved</ImpersonationInfoSecurity>
+        </ImpersonationInfo>
+      </DataSource>
+    </DataSources>
+    <Dimensions>
+      <Dimension>
+        <ID>Dim Czas Dnia</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Osoba</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Funkcjonariusz</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Wykroczenie</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Lokalizacja</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Status</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Data</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Posterunek</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Fact Mandat</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Fact Zgloszenie</ID>
+      </Dimension>
+    </Dimensions>
+    <Cubes>
+      <Cube>
+        <ID>Palicja DW</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Fact Mandat</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Mandat</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Fact Zgloszenie</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Zgloszenie</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Fact Mandat 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Mandat</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Fact Zgloszenie 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Zgloszenie</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+    </Cubes>
+    <DataSourceImpersonationInfo>
+      <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Default</ImpersonationMode>
+      <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
+    </DataSourceImpersonationInfo>
+  </Database>
+</ConfigurationSettings>

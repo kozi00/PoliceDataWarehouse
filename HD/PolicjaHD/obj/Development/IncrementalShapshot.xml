@@ -1,0 +1,124 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>PolicjaDWCube</Database>
+    <Server>localhost\MSSQLSERVER2</Server>
+    <ConnectionString>Data Source=localhost\MSSQLSERVER2;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>LzQi4SfEhxL2WN1Qg0+D3FXqzL8=24.11.2025 20:42:2024.11.2025 17:03:40</TimeStamp>
+        <ID>
+          <String>Palicja DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>iZb2kvStHYzVHIHnA1KnZmMi4MI=24.11.2025 19:49:3324.11.2025 14:26:04</TimeStamp>
+        <ID>
+          <String>Palicja DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>L+5dnAOM7PrggYBbGASMCQp2kfI=24.11.2025 19:49:3324.11.2025 15:57:00</TimeStamp>
+        <ID>
+          <String>Dim Czas Dnia</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>AxGWajIYz7KRaC1nQMYqqEXVKHQ=24.11.2025 19:49:3324.11.2025 15:26:44</TimeStamp>
+        <ID>
+          <String>Dim Osoba</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>oFNUc/jEMgFoX+SBq8pwkdyFovA=24.11.2025 19:49:3324.11.2025 15:43:22</TimeStamp>
+        <ID>
+          <String>Dim Funkcjonariusz</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>iSxyA/pa7XJTNJpCfqG9int3AtA=24.11.2025 19:49:3324.11.2025 15:26:44</TimeStamp>
+        <ID>
+          <String>Dim Wykroczenie</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>VbfdRpoS52S24C50AfLYKd9VZPw=24.11.2025 19:49:3324.11.2025 15:22:42</TimeStamp>
+        <ID>
+          <String>Dim Lokalizacja</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>5a2KAcQrEDShZZ8VikXkCA8tvZ8=24.11.2025 19:49:3324.11.2025 15:43:22</TimeStamp>
+        <ID>
+          <String>Dim Status</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>u5iA4K++qiqeWCsFKj3cIhRpcbU=24.11.2025 19:49:3324.11.2025 15:57:00</TimeStamp>
+        <ID>
+          <String>Dim Data</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>iqaekzPvU2+xW0tKtNKkPQ5ycaM=24.11.2025 19:49:3324.11.2025 15:43:22</TimeStamp>
+        <ID>
+          <String>Dim Posterunek</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>mF78zbV4jvmICfeKXxbwae6SIYk=24.11.2025 19:49:3324.11.2025 19:24:14</TimeStamp>
+        <ID>
+          <String>Fact Mandat</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>kbrlAaqVRYGHLDkXfAeFRixvrHE=24.11.2025 19:49:3324.11.2025 19:35:42</TimeStamp>
+        <ID>
+          <String>Fact Zgloszenie</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>SHPwOMi6nzF0yzlgc7OKFZqJvtY=24.11.2025 21:43:2224.11.2025 19:35:42ZihfWWGZYbZEPttg9Hz8IxU+Iu4=24.11.2025 19:49:3324.11.2025 19:35:42</TimeStamp>
+        <ID>
+          <String>Palicja DW</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>wSS46PZfCOFlfL7BwtW/UjJ1qrE=24.11.2025 19:49:3324.11.2025 13:45:04</TimeStamp>
+      <ID>
+        <String>PolicjaDWCube</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2025-11-24T20:47:43.8Z</LastDeployed>
+</DeploymentSnapshot>

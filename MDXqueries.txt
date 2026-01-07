@@ -1,82 +1,115 @@
--- =============================================================
--- ZESTAW 10 ZAPYTAŃ MDX DO PROJEKTU "POLICJA"
--- Nazwa kostki: [Palicja DW]
--- Instrukcja: Kopiuj każde zapytanie OSOBNO i klikaj Execute.
--- =============================================================
-
 -- -------------------------------------------------------------
 -- 1. Porównanie liczby mandatów wg kategorii (Maj vs Kwiecień)
 -- Cel: Analiza zmian liczby wykroczeń w czasie.
 -- -------------------------------------------------------------
+WITH 
+MEMBER [Measures].[Mandaty Kwiecien] AS 
+    ([Measures].[Fact Mandat Count], [Id Daty Wykroczenia].[Rok].&[2024], [Id Daty Wykroczenia].[Nazwa Miesiaca].&[April])
+MEMBER [Measures].[Mandaty Maj] AS 
+    ([Measures].[Fact Mandat Count], [Id Daty Wykroczenia].[Rok].&[2024], [Id Daty Wykroczenia].[Nazwa Miesiaca].&[May])
+MEMBER [Measures].[Roznica] AS
+    ([Measures].[Mandaty Maj] - [Measures].[Mandaty Kwiecien])
 SELECT 
-    {[Measures].[Numer Mandatu DD Distinct Count]} ON COLUMNS,
-    NON EMPTY [Dim Wykroczenie].[Rodzaj].[Rodzaj].MEMBERS * {[Dim Data].[Nazwa Miesiaca].&[Maj], [Dim Data].[Nazwa Miesiaca].&[Kwiecien]} ON ROWS
+    { [Measures].[Mandaty Kwiecien], [Measures].[Mandaty Maj], [Measures].[Roznica] } ON COLUMNS,
+    NON EMPTY [Dim Wykroczenie].[Rodzaj].Children ON ROWS
 FROM [Palicja DW]
-WHERE ([Dim Data].[Rok].&[2024])
 
 -- -------------------------------------------------------------
 -- 2. Mandaty w godzinach szczytu (7-9 i 15-17)
 -- Cel: Sprawdzenie obciążenia w kluczowych godzinach.
 -- -------------------------------------------------------------
 WITH 
-SET [GodzinySzczytu] AS
-    {[Dim Czas Dnia].[Godzina].&[7], [Dim Czas Dnia].[Godzina].&[8], 
-     [Dim Czas Dnia].[Godzina].&[15], [Dim Czas Dnia].[Godzina].&[16]}
-
-MEMBER [Measures].[Mandaty Szczyt] AS
-    SUM([GodzinySzczytu], [Measures].[Numer Mandatu DD Distinct Count])
-
+MEMBER [Measures].[Mandaty Kwiecien] AS 
+    ([Measures].[Fact Mandat Count], [Id Daty Wykroczenia].[Rok].&[2024], [Id Daty Wykroczenia].[Nazwa Miesiaca].&[April])
+MEMBER [Measures].[Mandaty Maj] AS 
+    ([Measures].[Fact Mandat Count], [Id Daty Wykroczenia].[Rok].&[2024], [Id Daty Wykroczenia].[Nazwa Miesiaca].&[May])
+MEMBER [Measures].[Roznica] AS
+    ([Measures].[Mandaty Maj] - [Measures].[Mandaty Kwiecien])
 SELECT 
-    {[Measures].[Mandaty Szczyt]} ON COLUMNS,
-    [Dim Data].[Nazwa Miesiaca].MEMBERS ON ROWS
+    { [Measures].[Mandaty Kwiecien], [Measures].[Mandaty Maj],[Measures].[Roznica] } ON COLUMNS,
+    { [Dim Czas Dnia].[Godzina].&[7], [Dim Czas Dnia].[Godzina].&[8], 
+      [Dim Czas Dnia].[Godzina].&[15], [Dim Czas Dnia].[Godzina].&[16] } ON ROWS
 FROM [Palicja DW]
-WHERE ([Dim Data].[Rok].&[2024])
 
 -- -------------------------------------------------------------
 -- 3. Korelacja: Zgłoszenia vs Mandaty
 -- Cel: Czy więcej zgłoszeń oznacza więcej wystawionych mandatów?
 -- -------------------------------------------------------------
-SELECT 
+WITH MEMBER [Measures].[Wspolczynnik Korelacji] AS
+    CORRELATION(
+        NONEMPTY([Id Daty Wykroczenia].[Nazwa Miesiaca].[Nazwa Miesiaca].Members),
+        [Measures].[Fact Mandat Count],
+        [Measures].[Fact Zgloszenie Count]
+    )
+
+SELECT
     {
-     [Measures].[Numer Mandatu DD Distinct Count], 
-     [Measures].[Fact Zgloszenie Count]
+        [Measures].[Fact Mandat Count],
+        [Measures].[Fact Zgloszenie Count],
+        [Measures].[Wspolczynnik Korelacji] 
     } ON COLUMNS,
-    [Dim Data].[Nazwa Miesiaca].MEMBERS ON ROWS
+
+    NON EMPTY [Id Daty Wykroczenia].[Nazwa Miesiaca].[Nazwa Miesiaca].Members ON ROWS
+
 FROM [Palicja DW]
-WHERE ([Dim Data].[Rok].&[2024])
 
 -- -------------------------------------------------------------
 -- 4. Ranking Funkcjonariuszy (Efektywność)
 -- Cel: Który funkcjonariusz wystawia najwięcej mandatów?
 -- -------------------------------------------------------------
+WITH 
+MEMBER [Measures].[Mandaty Poprzedni] AS 
+    ([Measures].[Fact Mandat Count], [Id Daty Wykroczenia].[Rok].&[2024], [Id Daty Wykroczenia].[Nazwa Miesiaca].&[April])
+MEMBER [Measures].[Mandaty Obecny] AS 
+    ([Measures].[Fact Mandat Count], [Id Daty Wykroczenia].[Rok].&[2024], [Id Daty Wykroczenia].[Nazwa Miesiaca].&[May])
 SELECT 
-    {[Measures].[Numer Mandatu DD Distinct Count]} ON COLUMNS,
-    NON EMPTY ORDER(
-        [Dim Funkcjonariusz].[Nazwisko].MEMBERS,
-        [Measures].[Numer Mandatu DD Distinct Count], 
-        BDESC
+    { [Measures].[Mandaty Poprzedni], [Measures].[Mandaty Obecny] } ON COLUMNS,
+    NON EMPTY TopCount(
+        FILTER(
+            [Dim Funkcjonariusz].[Numer Sluzbowy BK].Children * [Dim Funkcjonariusz].[Nazwisko].Children,
+            [Measures].[Mandaty Poprzedni] > 0  
+        ),
+        10,
+        [Measures].[Mandaty Obecny]
     ) ON ROWS
 FROM [Palicja DW]
-WHERE ([Dim Data].[Rok].&[2024])
 
 -- -------------------------------------------------------------
 -- 5. Mandaty według Posterunków
 -- Cel: Porównanie aktywności poszczególnych jednostek.
 -- -------------------------------------------------------------
+WITH 
+MEMBER [Measures].[Mandaty Poprzedni] AS 
+    ([Measures].[Fact Mandat Count], [Id Daty Wykroczenia].[Rok].&[2024], [Id Daty Wykroczenia].[Nazwa Miesiaca].&[April])
+MEMBER [Measures].[Mandaty Obecny] AS 
+    ([Measures].[Fact Mandat Count], [Id Daty Wykroczenia].[Rok].&[2024], [Id Daty Wykroczenia].[Nazwa Miesiaca].&[May])
+MEMBER [Measures].[Roznica] AS
+    ([Measures].[Mandaty Obecny] - [Measures].[Mandaty Poprzedni] )
+
 SELECT 
-    {[Measures].[Numer Mandatu DD Distinct Count]} ON COLUMNS,
-    NON EMPTY [Dim Posterunek].[Nazwa Posterunku].MEMBERS ON ROWS
+    { [Measures].[Mandaty Poprzedni], [Measures].[Mandaty Obecny], [Measures].[Roznica] } ON COLUMNS,
+    NON EMPTY [Dim Posterunek].[Nazwa Posterunku].Children ON ROWS
 FROM [Palicja DW]
 
+
+
 -- -------------------------------------------------------------
--- 6. Recydywiści (Osoby z więcej niż 1 mandatem)
+-- 6. Recydywiści (Osoby z więcej niż 1 mandatem) nie
 -- Cel: Identyfikacja osób łamiących prawo wielokrotnie.
 -- -------------------------------------------------------------
+WITH 
+-- Definiujemy miarę, która liczy mandaty tylko dla osób z historią > 1
+MEMBER [Measures].[Mandaty Recydywa] AS 
+    SUM(
+        FILTER([Dim Osoba].[Id Osoby].Children, [Measures].[Fact Mandat Count] > 1), 
+        [Measures].[Fact Mandat Count]
+    )
 SELECT 
-    {[Measures].[Numer Mandatu DD Distinct Count], [Measures].[Kwota Mandatu]} ON COLUMNS,
-    FILTER(
-        [Dim Osoba].[Pesel BK].MEMBERS,
-        [Measures].[Numer Mandatu DD Distinct Count] > 1
+    { [Measures].[Mandaty Recydywa] } ON COLUMNS,
+    NON EMPTY TopCount(
+        [Dim Wykroczenie].[Rodzaj].Children, 
+        10, 
+        [Measures].[Mandaty Recydywa]
     ) ON ROWS
 FROM [Palicja DW]
 
@@ -84,43 +117,87 @@ FROM [Palicja DW]
 -- 7. Czy wysokość mandatu wpływa na recydywę?
 -- Cel: Analiza średniej kwoty kar u recydywistów.
 -- -------------------------------------------------------------
-SELECT 
-    {[Measures].[Numer Mandatu DD Distinct Count], [Measures].[Srednia Kwota Mandatu]} ON COLUMNS,
-    FILTER(
-        [Dim Osoba].[Pesel BK].MEMBERS,
-        [Measures].[Numer Mandatu DD Distinct Count] > 1
-    ) ON ROWS
-FROM [Palicja DW]
+WITH 
+    SET [Recydywisci] AS 
+        FILTER([Dim Osoba].[Pesel BK].[Pesel BK].Members, [Measures].[Fact Mandat Count] > 1)
+    
+    SET [Jednorazowi] AS 
+        FILTER([Dim Osoba].[Pesel BK].[Pesel BK].Members, [Measures].[Fact Mandat Count] = 1)
 
+    MEMBER [Measures].[Srednia Kwota - Recydywisci] AS
+        AVG([Recydywisci], [Measures].[Kwota Mandatu])
+
+    MEMBER [Measures].[Srednia Kwota - Jednorazowi] AS
+        AVG([Jednorazowi], [Measures].[Kwota Mandatu])
+
+SELECT
+    { 
+        [Measures].[Srednia Kwota - Jednorazowi],
+        [Measures].[Srednia Kwota - Recydywisci] 
+    } ON COLUMNS
+
+FROM [Palicja DW]
 -- -------------------------------------------------------------
 -- 8. Miasta z największą recydywą
 -- Cel: Gdzie najczęściej dochodzi do powrotu do przestępstwa?
 -- -------------------------------------------------------------
-SELECT 
-    {[Measures].[Numer Mandatu DD Distinct Count]} ON COLUMNS,
-    NON EMPTY [Dim Lokalizacja].[Miasto].MEMBERS ON ROWS
+
+SELECT
+    { 
+        [Measures].[Fact Mandat Count]
+    } ON COLUMNS,
+
+    NON EMPTY 
+    TopCount(
+        EXCEPT(
+            [Dim Lokalizacja].[Miasto].[Miasto].Members,
+            {[Dim Lokalizacja].[Miasto].[All], [Dim Lokalizacja].[Miasto].[Nieznane]}
+        ),
+        5,
+        [Measures].[Fact Mandat Count]
+    ) ON ROWS
 FROM [Palicja DW]
-WHERE (
-    FILTER([Dim Osoba].[Pesel BK].MEMBERS, [Measures].[Numer Mandatu DD Distinct Count] > 1)
-)
 
 -- -------------------------------------------------------------
 -- 9. Status płatności a recydywa
 -- Cel: Czy recydywiści płacą mandaty?
 -- -------------------------------------------------------------
-SELECT 
-    {[Measures].[Kwota Mandatu], [Measures].[Wskaznik sciagalnosci]} ON COLUMNS,
-    [Dim Status].[Status Opis].MEMBERS ON ROWS
-FROM [Palicja DW]
-WHERE (
-    FILTER([Dim Osoba].[Pesel BK].MEMBERS, [Measures].[Numer Mandatu DD Distinct Count] > 1)
+SELECT
+    { [Measures].[Fact Mandat Count] } ON COLUMNS,
+
+    NON EMPTY [Dim Status].[Status Opis].[Status Opis].Members ON ROWS
+
+FROM 
+(
+    SELECT 
+        FILTER(
+            [Dim Osoba].[Pesel BK].[Pesel BK].Members, 
+            [Measures].[Fact Mandat Count] > 1
+        ) ON 0
+    FROM [Palicja DW]
 )
 
 -- -------------------------------------------------------------
--- 10. Satysfakcja ze zgłoszeń wg Miast
--- Cel: Gdzie obywatele są najbardziej zadowoleni z obsługi?
+-- 10. Wpływ dobrego funkcjonariusza.
+-- Cel: Czy funkcjonariusz obsługujący wykroczenie ma wpływ na recydywę zatrzymanej osoby?
 -- -------------------------------------------------------------
-SELECT 
-    {[Measures].[Fact Zgloszenie Count], [Measures].[Sredni poziom satysfakcji]} ON COLUMNS,
-    NON EMPTY [Dim Posterunek].[Miasto].MEMBERS ON ROWS
-FROM [Palicja DW]
+SELECT
+    { [Measures].[Fact Mandat Count] } ON COLUMNS,
+
+    NON EMPTY 
+    TOPCOUNT(
+        [Dim Funkcjonariusz].[Numer Sluzbowy BK].[Numer Sluzbowy BK].Members 
+        * [Dim Funkcjonariusz].[Stopien Sluzbowy].[Stopien Sluzbowy].Members,
+        10,
+        [Measures].[Fact Mandat Count]
+    ) ON ROWS
+
+FROM 
+(
+    SELECT 
+        FILTER(
+            [Dim Osoba].[Pesel BK].[Pesel BK].Members, 
+            [Measures].[Fact Mandat Count] > 1
+        ) ON 0
+    FROM [Palicja DW] 
+)
